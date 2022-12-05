@@ -1,0 +1,156 @@
+SPINE-1:
+    interfaces:
+        loopback0:
+            ipv4: 192.168.101.101
+            mask: 32
+        Ethernet1:
+            ipv4: 192.168.103.0
+            mask: 31
+        Ethernet2:
+            ipv4: 192.168.103.2
+            mask: 31 
+        Ethernet3:
+            ipv4: 192.168.103.4
+            mask: 31
+        Ethernet4:
+            ipv4: 192.168.103.6
+            mask: 31
+        Ethernet5:
+            ipv4: 192.168.103.8
+            mask: 31
+    BGP:
+        ASN: 65100
+        peers:
+            1:
+                ipv4: 192.168.101.11
+                ASN: 65101
+            2:
+                ipv4: 192.168.101.12
+                ASN: 65101
+            3:
+                ipv4: 192.168.101.13
+                ASN: 65102
+            4:
+                ipv4: 192.168.101.14
+                ASN: 65102
+            5:
+                ipv4: 192.168.101.21
+                ASN: 65103
+
+
+LEAF-11:
+    interfaces:
+        loopback0:
+            ipv4: 192.168.101.11
+            mask: 32
+        loopback1:
+            ipv4: 192.168.101.11
+            mask: 32
+        Ethernet1:
+            ipv4: 192.168.103.1
+            mask: 31
+
+    BGP:
+        ASN: 65101
+        peers:
+            1:
+                ipv4: 192.168.101.101
+                ASN: 65100
+    MLAG:
+        role: Left
+        interface: Ethernet8
+        VLAN: 4094
+        
+                
+LEAF-12:
+    interfaces:
+        loopback0:
+            ipv4: 192.168.101.12
+            mask: 32
+        loopback1:
+            ipv4: 192.168.101.11
+            mask: 32
+        Ethernet1:
+            ipv4: 192.168.103.3
+            mask: 31
+
+    BGP:
+        ASN: 65101
+        peers:
+            1:
+                ipv4: 192.168.101.101
+                ASN: 65100
+    MLAG:
+        role: Right
+        interface: Ethernet8
+        VLAN: 4094
+
+LEAF-13:
+    interfaces:
+        loopback0:
+            ipv4: 192.168.101.13
+            mask: 32
+        loopback1:
+            ipv4: 192.168.101.13
+            mask: 32
+        Ethernet1:
+            ipv4: 192.168.103.5
+            mask: 31
+
+    BGP:
+        ASN: 65102
+        peers:
+            1:
+                ipv4: 192.168.101.101
+                ASN: 65100
+    MLAG:
+        role: Left
+        interface: Ethernet8
+        VLAN: 4094
+                
+LEAF-14:
+    interfaces:
+        loopback0:
+            ipv4: 192.168.101.14
+            mask: 32
+        loopback1:
+            ipv4: 192.168.101.13
+            mask: 32
+        Ethernet1:
+            ipv4: 192.168.103.7
+            mask: 31
+
+    BGP:
+        ASN: 65102
+        peers:
+            1:
+                ipv4: 192.168.101.101
+                ASN: 65100
+    MLAG:
+        role: Right
+        interface: Ethernet8
+        VLAN: 4094
+BLEAF-11:
+    interfaces:
+        loopback0:
+            ipv4: 192.168.101.21
+            mask: 32
+        loopback1:
+            ipv4: 192.168.102.21
+            mask: 32
+        Ethernet1:
+            ipv4: 192.168.103.9
+            mask: 31
+        Ethernet1:
+            ipv4: 192.168.254.1
+            mask: 31
+
+    BGP:
+        ASN: 65103
+        peers:
+            1:
+                ipv4: 192.168.101.101
+                ASN: 65100
+            2:
+                ipv4: 192.168.201.101
+                ASN: 65000
