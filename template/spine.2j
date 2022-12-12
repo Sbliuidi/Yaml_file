@@ -1,0 +1,3 @@
+{% for item in undelay_DC-1[inventory_hostname][interfaces] %}
+interface {{item}}
+ip address {{undelay_DC-1[inventory_hostname][interfaces][item]}}
